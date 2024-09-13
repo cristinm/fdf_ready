@@ -6,7 +6,7 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:41:38 by cristinm          #+#    #+#             */
-/*   Updated: 2024/09/13 13:00:56 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:41:25 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,15 +44,32 @@
 #include "libft.h"
 #include "../ft_printf/ft_printf.h"
 
-#include "libft.h"
-#include "../ft_printf/ft_printf.h"
+char	*join_strings(char *str, char *temp)
+{
+	char	*new_str;
+
+	if (str)
+		new_str = ft_strjoin(str, temp);
+	else
+		new_str = ft_strdup(temp);
+	if (!new_str)
+	{
+		free(temp);
+		if (str)
+			free(str);
+		return (NULL);
+	}
+	if (str)
+		free(str);
+	return (new_str);
+}
 
 char	*read_block(int fd, char *str)
 {
 	char	*temp;
 	int		bytes_read;
 
-	temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	temp = allocate_temp();
 	if (!temp)
 		return (NULL);
 	bytes_read = 1;
@@ -60,33 +77,15 @@ char	*read_block(int fd, char *str)
 	{
 		bytes_read = read(fd, temp, BUFFER_SIZE);
 		if (bytes_read == -1)
-		{
-			free(temp);
-			if (str)
-				free(str);
-			return (NULL);
-		}
+			return (handle_read_error(temp, str));
 		temp[bytes_read] = '\0';
-		char *new_str;
-		if (str)
-			new_str = ft_strjoin(str, temp);
-		else
-			new_str = ft_strdup(temp);
-		if (!new_str)
-		{
-			free(temp);
-			if (str)
-				free(str);
+		str = join_strings(str, temp);
+		if (!str)
 			return (NULL);
-		}
-		if (str)
-			free(str); // Free old string to avoid memory leak
-		str = new_str;
 	}
 	free(temp);
 	return (str);
 }
-
 
 char	*get_until_nl(char *storage)
 {
@@ -147,8 +146,8 @@ char	*get_leftovers(char *storage)
 
 char	*get_next_line(int fd)
 {
-	static char *storage = NULL;
-	char        *next_line;
+	static char	*storage = NULL;
+	char		*next_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 	{

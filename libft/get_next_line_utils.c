@@ -6,7 +6,7 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 18:41:54 by cristinm          #+#    #+#             */
-/*   Updated: 2024/07/28 16:58:09 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:41:34 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,23 @@ char	*ft_strchr_mod(char *s, int c)
 			return ((char *)&s[i]);
 		i++;
 	}
+	return (NULL);
+}
+
+char	*allocate_temp(void)
+{
+	char	*temp;
+
+	temp = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!temp)
+		return (NULL);
+	return (temp);
+}
+
+char	*handle_read_error(char *temp, char *str)
+{
+	free(temp);
+	if (str)
+		free(str);
 	return (NULL);
 }

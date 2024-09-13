@@ -6,7 +6,7 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 10:59:42 by cristinm          #+#    #+#             */
-/*   Updated: 2024/08/24 14:18:14 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/13 13:41:53 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <stdlib.h>
 # include <stdint.h>
 # include <limits.h>
-#include <stddef.h>
+# include <stddef.h>
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -92,6 +92,8 @@ char	*ft_strchr_mod(char *s, int c);
 char	*read_block(int fd, char *str);
 char	*get_until_nl(char *storage);
 char	*get_leftovers(char *storage);
-void	free_get_next_line_storage(void);
+char	*allocate_temp(void);
+char	*handle_read_error(char *temp, char *str);
+char	*join_strings(char *str, char *temp);
 
 #endif
