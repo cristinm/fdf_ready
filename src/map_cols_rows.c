@@ -6,12 +6,11 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/19 14:41:14 by cristinm          #+#    #+#             */
-/*   Updated: 2024/08/24 14:23:59 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/13 16:58:32 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
-//#include <ctype.h>
 
 void	count_rows(const char *buffer, t_data *data)
 {
@@ -38,7 +37,7 @@ void	count_cols(const char *buffer, t_data *data)
 	const char	*line_start;
 	const char	*line_end;
 	int			col_count;
-	const char	*ptr = line_start;
+	const char	*ptr;
 	const char	*col_end;
 
 	line_start = buffer;

@@ -6,7 +6,7 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/10 19:40:12 by cristinm          #+#    #+#             */
-/*   Updated: 2024/08/22 18:21:41 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/13 14:01:53 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	check_file_extension(const char *filename)
 {
-	int			len;
-	const char	*extension;
+	int		len;
+	char	*extension;
 
 	len = ft_strlen(filename);
 	extension = ".fdf";
