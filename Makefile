@@ -6,7 +6,7 @@
 #    By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/01 14:52:01 by cristinm          #+#    #+#              #
-#    Updated: 2024/08/24 18:46:04 by cristinm         ###   ########.fr        #
+#    Updated: 2024/09/17 09:34:02 by cristinm         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ SRC = src/adjust.c src/allocate.c src/cleanup.c src/draw_iso_grid.c \
 	src/map_buffer.c
 OBJS = $(SRC:.c=.o)
 CC = gcc
-CFLAGS = 
+CFLAGS =  -Wall -Wextra -Werror
 MLX_DIR = ./mlx
 MLX_LIB = $(MLX_DIR)/libmlx_linux.a
 LIBFT_DIR = ./libft

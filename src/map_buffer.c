@@ -6,7 +6,7 @@
 /*   By: cristinm <cristinm@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/24 14:03:47 by cristinm          #+#    #+#             */
-/*   Updated: 2024/08/24 14:12:20 by cristinm         ###   ########.fr       */
+/*   Updated: 2024/09/17 09:35:36 by cristinm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	read_and_expand_buffer(int file, t_data *data, size_t *total_read)
 		*total_read += bytes_read;
 		bytes_read = read(file, data->temp_buffer, sizeof(data->temp_buffer));
 	}
+	return (0);
 }
 
 char	*read_file_to_buffer(const char *filename, t_data *data)
